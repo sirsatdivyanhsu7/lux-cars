@@ -12,23 +12,6 @@ export default class SplashScreen extends Component {
       this.props.navigation.navigate('Login Screen');
     }, 2500);
   }
-  // componentDidMount() {
-  //   this.checkLoginState();
-  // }
-
-  // async checkLoginState() {
-  //   //Get current login state
-  //   const state = await AsyncStorageUtil.getLoginState();
-
-  //   //Check the the user is logged in or not
-  //   if (state === LoginState.login) {
-  //     // User is logged in - send him to dashboard
-  //     this.props.navigation.replace(NavigationRoutes.GoTabs);
-  //   } else {
-  //     // User is not logged in
-  //     this.props.navigation.replace(NavigationRoutes.LoginScreen);
-  //   }
-  // }
 
   render() {
     return (

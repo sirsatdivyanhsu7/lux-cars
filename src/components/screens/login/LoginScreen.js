@@ -9,10 +9,57 @@ import {
 } from 'react-native';
 import {ImageConstant} from '../../../assets/ImageConstant';
 import {Colors} from '../../../constants/Color';
+import {APIParameters} from '../../../constants/Constants';
+import Errors from '../../../constants/Strings';
+import axios from 'axios';
 
 export default class LoginScreen extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loginEmail: '',
+      loginPassword: '',
+    };
+  }
+  loginButtonPressed() {
+    this.callLoginAPI();
+  }
+
+  async callLoginAPI() {
+    //Create user paramters dict
+    const params = {
+      [APIParameters.email]: this.state.loginEmail,
+      [APIParameters.password]: this.state.loginPassword,
+    };
+    const options = {
+      headers: {
+        grant_type: 'password',
+        client_id: 'a0c91a1c-956f-43da-85ae-e97e8aa45f62',
+        client_secret: '1234',
+        username: 'faisalkahn1690@gmail.com',
+        password: '1234',
+      },
+    };
+    await axios.post(
+      'http://13.126.120.205/pointBack/web/oauth/token',
+      params,
+      options,
+    );
+    response => {
+      if (response.acess_token) {
+        this.setState(
+          {
+            loginPassword: '',
+          },
+          function() {
+            this.props.navigation.navigate('Home');
+          },
+        );
+      }
+    };
+    error => {
+      this.props.showMessage(true, Errors.error, error);
+    };
   }
 
   render() {
@@ -28,7 +75,14 @@ export default class LoginScreen extends Component {
             <View style={styles.underline}>
               <Text>Username</Text>
               <View style={styles.inputContainer}>
-                <TextInput placeholder={'Name/ID'} style={styles.inputText} />
+                <TextInput
+                  placeholder={'Name/ID'}
+                  style={styles.inputText}
+                  emailValue={this.state.loginEmail}
+                  onEmailChange={text => {
+                    this.setState({loginEmail: text});
+                  }}
+                />
                 <Image
                   source={ImageConstant.passUser}
                   style={styles.passLogo}
@@ -38,13 +92,23 @@ export default class LoginScreen extends Component {
             <View style={styles.underline}>
               <Text>Password</Text>
               <View style={styles.inputContainer}>
-                <TextInput placeholder={'Password'} style={styles.inputText} />
+                <TextInput
+                  placeholder={'Password'}
+                  style={styles.inputText}
+                  loginPassword={this.state.loginPassword}
+                  onPasswordChange={text => {
+                    this.setState({loginPassword: text});
+                  }}
+                />
                 <Image source={ImageConstant.passKey} style={styles.passLogo} />
               </View>
             </View>
           </View>
           <View style={styles.login}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                this.loginButtonPressed();
+              }}>
               <Text style={styles.loginText}>Login</Text>
             </TouchableOpacity>
           </View>
