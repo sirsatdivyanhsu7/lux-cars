@@ -6,12 +6,7 @@ import * as Actions from '../redux/Actions';
 import Navigation from './Navigation';
 
 function mapStateToProps(state) {
-  return {
-    shouldShowLoader: state.dataReducer._showLoader,
-    shouldShowMessagePopup: state.messageReducer._showMessagePopup,
-    heading: state.messageReducer._heading,
-    message: state.messageReducer._message,
-  };
+  return {};
 }
 
 function mapDispatchToProps(dispatch) {

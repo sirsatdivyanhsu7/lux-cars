@@ -1,10 +1,3 @@
-/**
- * @author Rahul Rajput
- * @email rahul@studiographene.com
- * @create date 2020-04-16 13:14:44
- * @modify date 2020-04-17 16:16:29
- * @desc [One store to rule them all]
- */
 import {createStore, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
 import {persistStore, persistReducer} from 'redux-persist';
