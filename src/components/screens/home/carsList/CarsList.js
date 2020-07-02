@@ -17,15 +17,17 @@ export default class CarsList extends Component {
     this.cardView = this.cardView.bind(this);
   }
 
-  fullViewPressed() {
-    this.props.navigation.navigate('Full View');
+  fullViewPressed(i) {
+    this.props.navigation.navigate('Full View', {
+      carsData: List[i - 1],
+    });
   }
   cardView(item) {
     let items = item.item;
     return (
       <TouchableOpacity
         onPress={() => {
-          this.fullViewPressed();
+          this.fullViewPressed(items.key);
         }}>
         <View style={styles.cardContainer}>
           <View style={styles.alignment}>

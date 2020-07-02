@@ -9,24 +9,20 @@ export default class CarsFullView extends Component {
   }
 
   render() {
+    const {carsData} = this.props.route.params;
     return (
       <SafeAreaView>
         <View style={styles.container}>
-          <Image source={ImageConstant.car01} style={styles.carContainer} />
+          <Image source={carsData.image} style={styles.carContainer} />
           <View style={styles.shortdescriptionContainer}>
             <View style={styles.cost}>
               <Text style={styles.costText}>₹ </Text>
-              <Text style={styles.costText}>500000</Text>
+              <Text style={styles.costText}>{carsData.price}</Text>
             </View>
-            <Text style={styles.modelText}>Model No.</Text>
+            <Text style={styles.modelText}>{carsData.model}</Text>
           </View>
           <View style={styles.desContainer}>
-            <Text style={styles.desText}>
-              A car (or automobile) is a wheeled motor vehicle used for
-              transportation. Most definitions of cars say that they run
-              primarily on roads, seat one to eight people, have four tires, and
-              mainly transport people rather than goods.
-            </Text>
+            <Text style={styles.desText}>{carsData.description}</Text>
           </View>
         </View>
       </SafeAreaView>
