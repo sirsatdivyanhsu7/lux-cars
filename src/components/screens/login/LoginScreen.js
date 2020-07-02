@@ -10,7 +10,6 @@ import {
 import {ImageConstant} from '../../../assets/ImageConstant';
 import {Colors} from '../../../constants/Color';
 import {APIParameters} from '../../../constants/Constants';
-import Errors from '../../../constants/Strings';
 import axios from 'axios';
 
 export default class LoginScreen extends Component {
@@ -58,7 +57,7 @@ export default class LoginScreen extends Component {
       }
     };
     error => {
-      this.props.showMessage(true, Errors.error, error);
+      this.props.showMessage(true, 'error', error);
     };
   }
 
