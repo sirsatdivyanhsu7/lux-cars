@@ -33,7 +33,7 @@ class Navigation extends Component {
           <Stack.Screen
             name="Full View"
             component={FullView}
-            options={{headerShown: false}}
+            options={{headerShown: true}}
           />
         </Stack.Navigator>
       </NavigationContainer>

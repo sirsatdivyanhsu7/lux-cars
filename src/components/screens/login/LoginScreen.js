@@ -21,45 +21,46 @@ export default class LoginScreen extends Component {
     };
   }
   loginButtonPressed() {
-    this.callLoginAPI();
+    // this.callLoginAPI();
+    this.props.navigation.navigate('Home');
   }
 
-  async callLoginAPI() {
-    //Create user paramters dict
-    const params = {
-      [APIParameters.email]: this.state.loginEmail,
-      [APIParameters.password]: this.state.loginPassword,
-    };
-    const options = {
-      headers: {
-        grant_type: 'password',
-        client_id: 'a0c91a1c-956f-43da-85ae-e97e8aa45f62',
-        client_secret: '1234',
-        username: 'faisalkahn1690@gmail.com',
-        password: '1234',
-      },
-    };
-    await axios.post(
-      'http://13.126.120.205/pointBack/web/oauth/token',
-      params,
-      options,
-    );
-    response => {
-      if (response.acess_token) {
-        this.setState(
-          {
-            loginPassword: '',
-          },
-          function() {
-            this.props.navigation.navigate('Home');
-          },
-        );
-      }
-    };
-    error => {
-      this.props.showMessage(true, 'error', error);
-    };
-  }
+  // async callLoginAPI() {
+  //   //Create user paramters dict
+  //   const params = {
+  //     [APIParameters.email]: this.state.loginEmail,
+  //     [APIParameters.password]: this.state.loginPassword,
+  //   };
+  //   const options = {
+  //     headers: {
+  //       grant_type: 'password',
+  //       client_id: 'a0c91a1c-956f-43da-85ae-e97e8aa45f62',
+  //       client_secret: '1234',
+  //       username: 'faisalkahn1690@gmail.com',
+  //       password: '1234',
+  //     },
+  //   };
+  //   await axios.post(
+  //     'http://13.126.120.205/pointBack/web/oauth/token',
+  //     params,
+  //     options,
+  //   );
+  //   response => {
+  //     if (response.acess_token) {
+  //       this.setState(
+  //         {
+  //           loginPassword: '',
+  //         },
+  //         function() {
+  //           this.props.navigation.navigate('Home');
+  //         },
+  //       );
+  //     }
+  //   };
+  //   error => {
+  //     this.props.showMessage(true, 'error', error);
+  //   };
+  // }
 
   render() {
     return (
