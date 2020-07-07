@@ -6,7 +6,9 @@ import * as Actions from '../../../../../redux/Actions';
 import CarsFullView from './CarsFullView';
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    userID: state.auth.userID,
+  };
 }
 
 function mapDispatchToProps(dispatch) {

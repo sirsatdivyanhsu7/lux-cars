@@ -13,6 +13,7 @@ export default class CarsFullView extends Component {
     return (
       <SafeAreaView>
         <View style={styles.container}>
+          <Text>{this.props.userID}</Text>
           <Image source={carsData.image} style={styles.carContainer} />
           <View style={styles.shortdescriptionContainer}>
             <View style={styles.cost}>

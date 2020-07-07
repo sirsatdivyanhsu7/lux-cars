@@ -1,6 +1,8 @@
-export const selectedListItem = selectedItemKey => {
-  return {
-    type: 'selected_item',
-    payload: selectedItemKey,
-  };
+import {UPDATE_ID} from './actionTypes';
+
+export const updateID = data => dispatch => {
+  dispatch({
+    type: UPDATE_ID,
+    payload: data,
+  });
 };

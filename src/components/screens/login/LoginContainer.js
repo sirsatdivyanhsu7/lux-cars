@@ -1,18 +1,17 @@
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-import * as Actions from '../../../redux/Actions';
+import {updateID} from '../../../redux/Actions';
 
 import LoginScreen from './LoginScreen';
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    userID: state.auth.userID,
+  };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
-}
-
+const mapDispatchToProps = dispatch => bindActionCreators({updateID}, dispatch);
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
