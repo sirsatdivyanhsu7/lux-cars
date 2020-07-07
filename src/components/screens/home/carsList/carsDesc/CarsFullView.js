@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, SafeAreaView} from 'react-native';
-import {ImageConstant} from '../../../../../assets/ImageConstant';
 import {Colors} from '../../../../../constants/Color';
 
 export default class CarsFullView extends Component {
   constructor(props) {
     super(props);
   }
-
+  // This will display each list item
   render() {
+    // Destructuring the this.props.route.params
     const {carsData} = this.props.route.params;
     return (
       <SafeAreaView>

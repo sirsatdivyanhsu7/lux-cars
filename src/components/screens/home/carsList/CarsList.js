@@ -18,11 +18,14 @@ export default class CarsList extends Component {
   }
 
   fullViewPressed(i) {
+    // This will navigate to description View and
+    // Index of selected item is passed
     this.props.navigation.navigate('Full View', {
       carsData: List[i - 1],
     });
   }
   cardView(item) {
+    // The design of each list item
     let items = item.item;
     return (
       <TouchableOpacity
@@ -45,6 +48,7 @@ export default class CarsList extends Component {
     );
   }
   cardListView() {
+    // This will render the list of items
     return (
       <FlatList
         data={List}

@@ -10,6 +10,7 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
   }
+  // Contains all 3 screens in bottom Navigation
   render() {
     return (
       <Tab.Navigator

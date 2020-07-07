@@ -7,7 +7,9 @@ export default class SplashScreen extends Component {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
+    // Splash screen will Navigate to Login Screen after 2.5sec
     setTimeout(() => {
       this.props.navigation.navigate('Login Screen');
     }, 2500);

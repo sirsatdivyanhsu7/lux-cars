@@ -22,16 +22,17 @@ export default class LoginScreen extends Component {
     };
   }
   loginButtonPressed() {
+    // LoginButton when pressed
     this.callLoginAPI();
-    // For test
-    // this.props.updateID('rest');
   }
 
   async callLoginAPI() {
+    // email and password params will be passed
     const params = {
       [APIParameters.email]: this.state.loginEmail,
       [APIParameters.password]: this.state.loginPassword,
     };
+    // Addition headers
     const options = {
       headers: {
         grant_type: 'password',
@@ -41,27 +42,31 @@ export default class LoginScreen extends Component {
         password: '1234',
       },
     };
-    await axios.post(
-      'https://5e91daadbbff810016968ad4.mockapi.io/login',
-      params,
-      options,
-    );
-    response => {
-      if (response.token) {
-        this.setState(
-          {
-            userID: response.userID,
-          },
-          function() {
-            this.props.updateID(response.userID);
-            this.props.navigation.navigate('Home');
-          },
-        );
-      }
-    };
-    error => {
-      this.props.showMessage(true, 'error', error);
-    };
+    // POST API call to get access token
+    await axios
+      .post(
+        'https://5e91daadbbff810016968ad4.mockapi.io/login',
+        params,
+        options,
+      )
+      .then(response => {
+        console.log(response);
+        // If we get the token then navigate to Home with storing the userID
+        if (response.data.token) {
+          this.setState(
+            {
+              userID: response.data.userId,
+            },
+            function() {
+              this.props.updateID(response.data.userId);
+              this.props.navigation.navigate('Home');
+            },
+          );
+        }
+      })
+      .catch(error => {
+        this.props.showMessage(true, 'error', error);
+      });
   }
 
   render() {

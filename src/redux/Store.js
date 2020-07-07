@@ -2,6 +2,7 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import userID from './reducer/UpdateIDReducer';
 import thunk from 'redux-thunk';
 
+// comining all the reducers
 const rootReducer = combineReducers({
   auth: userID,
 });
